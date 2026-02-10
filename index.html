@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer Interface Portfolio</title>
+
+    <style>
+        :root {
+            --bg-dark: #020b1a;
+            --panel: #06172d;
+            --neon: #00f7ff;
+            --text: #e6f7ff;
+            --muted: #8bbcd6;
+            --border: rgba(0, 247, 255, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+                var(--bg-dark);
+            background-size: 40px 40px;
+            color: var(--text);
+        }
+
+        .header {
+            background: linear-gradient(90deg, #04152d, #062f55);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--neon);
+            color: #02121f;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header h1 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            margin-left: 18px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--neon);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .window {
+            background: linear-gradient(180deg, #051a33, #031024);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .window-title {
+            font-size: 1.4rem;
+            color: var(--neon);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+
+        .hero span {
+            color: var(--neon);
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .photocard {
+            flex: 0 0 280px;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.15), rgba(0, 247, 255, 0.05));
+            border: 2px solid var(--neon);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photocard:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 50px rgba(0, 247, 255, 0.4);
+        }
+
+        .photocard-image {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #04152d, #062f55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--neon);
+        }
+
+        .photocard-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photocard-info {
+            padding: 16px;
+            background: rgba(0, 15, 30, 0.8);
+            border-top: 1px solid var(--border);
+        }
+
+        .photocard-name {
+            color: var(--neon);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .photocard-title {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .skill {
+            background: rgba(0, 247, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            background: rgba(0, 247, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .project h4 {
+            color: var(--neon);
+            margin-bottom: 10px;
+        }
+
+        .about-title {
+            font-size: 1.2rem;
+            color: var(--neon);
+            margin-top: 16px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact p {
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .contact a {
+            color: var(--neon);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact a:hover {
+            border-bottom: 1px solid var(--neon);
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--neon);
+        }
+
+        .address-text {
+            color: var(--muted);
+        }
+
+        .view-projects-btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 12px 24px;
+            background: rgba(0, 247, 255, 0.1);
+            border: 2px solid var(--neon);
+            border-radius: 8px;
+            color: var(--neon);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .view-projects-btn:hover {
+            background: rgba(0, 247, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .project-photocards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-photocard {
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.1), rgba(0, 247, 255, 0.02));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-photocard:hover {
+            border-color: var(--neon);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #04152d, #062f55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--neon);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-details {
+            padding: 20px;
+        }
+
+        .project-details h4 {
+            color: var(--neon);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .project-details p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .portfolio-bg {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.08), rgba(0, 247, 255, 0.02));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            border-color: var(--neon);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .category-card h4 {
+            color: var(--neon);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            background: rgba(0, 247, 255, 0.05);
+            border-left: 3px solid var(--neon);
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .category-item strong {
+            color: var(--text);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .photocard {
+                flex: 0 0 auto;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <div class="logo-circle">Z</div>
+            <h1>Portfolio ni Jepoy</h1>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section class="window hero" id="about">
+            <div class="hero-content">
+                <h2>Hello, I'm <span>Jaymar Vince Galang</span></h2>
+                <p>
+                    I am an Associate in Computer Technology (ACT) student passionate about learning and exploring the
+                    world of technology. I enjoy working with computers, experimenting with basic programming, and
+                    creating simple digital projects. Through my studies, I aim to improve my technical skills, solve
+                    problems creatively, and grow in the field of IT.
+                </p>
+                <a href="#portfolio" class="view-projects-btn">View My Projects</a>
+            </div>
+            <div class="photocard">
+                <div class="photocard-image"><img src="p1.png" alt="Jaymar Photo"></div>
+                <div class="photocard-info">
+                    <div class="photocard-name">Jaymar Vince B. Galang</div>
+                    <div class="photocard-title">Aspiring Web Developer</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="window" id="skills">
+            <h3 class="window-title">Skills</h3>
+            <div class="skills">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">UI / UX</div>
+                <div class="skill">Responsive Design</div>
+                <div class="skill">Problem Solving</div>
+            </div>
+        </section>
+
+        <section class="window" id="portfolio">
+            <h3 class="window-title">Projects</h3>
+            <div class="project-photocards">
+                <div class="project-photocard">
+                    <div class="project-image">💻</div>
+                    <div class="project-details">
+                        <h4>Portfolio Website</h4>
+                        <p>Personal website inspired by computer interfaces with futuristic design and interactive
+                            elements.</p>
+                    </div>
+                </div>
+                <div class="project-photocard">
+                    <div class="project-image">📊</div>
+                    <div class="project-details">
+                        <h4>System Dashboard</h4>
+                        <p>UI design resembling futuristic operating systems with real-time data visualization.</p>
+                    </div>
+                </div>
+                <div class="project-photocard">
+                    <div class="project-image">🎨</div>
+                    <div class="project-details">
+                        <h4>UI Design Concept</h4>
+                        <p>Modern and creative interface design showcasing clean layouts and responsive components.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="window" id="portfolio-bg">
+            <h3 class="window-title">Background & Experience</h3>
+            <div class="portfolio-bg">
+                <div class="category-card">
+                    <div class="category-icon">🎓</div>
+                    <h4>Educational Background</h4>
+                    <ul class="category-list">
+                        <li class="category-item">
+                            <strong>Associate in Computer Technology (ACT)</strong>
+                            Your College/University Name • 2023 - Present
+                        </li>
+                        <li class="category-item">
+                            <strong>Secondary Education</strong>
+                            Your School Name • 2019 - 2023
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h4>Trainings & Seminars</h4>
+                    <ul class="category-list">
+                        <li class="category-item">
+                            <strong>Web Development Bootcamp</strong>
+                            Training Provider • 2024
+                        </li>
+                        <li class="category-item">
+                            <strong>UI/UX Design Workshop</strong>
+                            Design Institute • 2024
+                        </li>
+                        <li class="category-item">
+                            <strong>JavaScript Fundamentals</strong>
+                            Online Platform • 2023
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">💼</div>
+                    <h4>Work Experience</h4>
+                    <ul class="category-list">
+                        <li class="category-item">
+                            <strong>Junior Web Developer</strong>
+                            Company Name • 2024 - Present
+                        </li>
+                        <li class="category-item">
+                            <strong>Freelance Designer</strong>
+                            Self-employed • 2023 - 2024
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="window contact" id="contact">
+            <h3 class="window-title">Contact</h3>
+            <p class="contact-item"><span class="contact-icon">✉️</span> Email: <a
+                    href="mailto:yourname@email.com">jaymarbarcelon123@gmail.com</a></p>
+            <p class="contact-item"><span class="contact-icon">�</span> Phone: <a href="tel:+1234567890">+1 (234)
+                    567-890</a></p>
+            <p class="contact-item"><span class="contact-icon">📍</span> Address: <span class="address-text">Panasahan,
+                    Malolos, Bulacan</span></p>
+            <p class="contact-item"><span class="contact-icon">🔗</span> GitHub: <a href="https://github.com/dashboard"
+                    target="_blank">github.com/yourname</a></p>
+        </section>
+
+    </div>
+
+    <footer>
+        © 2026 | Jaymar Vince B. Galang
+    </footer>
+
+</body>
+
+</html>
