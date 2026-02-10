@@ -173,6 +173,16 @@
             padding: 18px;
             border-radius: 14px;
             text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill:hover {
+            background: rgba(0, 247, 255, 0.15);
+            border-color: var(--neon);
+            color: var(--neon);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+            transform: translateY(-4px);
         }
 
         .projects {
@@ -191,6 +201,20 @@
         .project h4 {
             color: var(--neon);
             margin-bottom: 10px;
+        }
+
+        .showcase-title {
+            text-align: center;
+            padding: 40px 20px 20px;
+            margin-bottom: 20px;
+        }
+
+        .showcase-title h2 {
+            font-size: 2rem;
+            color: var(--neon);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .about-title {
@@ -255,8 +279,8 @@
 
         .project-photocards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
         }
 
         .project-photocard {
@@ -265,17 +289,21 @@
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-photocard:hover {
             border-color: var(--neon);
-            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
-            transform: translateY(-8px);
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.4), 0 8px 25px rgba(0, 0, 0, 0.5);
+            transform: translateY(-12px);
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.15), rgba(0, 247, 255, 0.05));
         }
 
         .project-image {
             width: 100%;
-            height: 220px;
+            height: 160px;
             background: linear-gradient(135deg, #04152d, #062f55);
             display: flex;
             align-items: center;
@@ -283,22 +311,47 @@
             font-size: 3rem;
             color: var(--neon);
             border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-photocard:hover .project-image::before {
+            opacity: 1;
         }
 
         .project-details {
-            padding: 20px;
+            padding: 16px;
+            background: linear-gradient(180deg, rgba(0, 15, 30, 0.6), rgba(0, 25, 45, 0.8));
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-details h4 {
             color: var(--neon);
             margin-bottom: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .project-details p {
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
+            flex: 1;
         }
 
         .portfolio-bg {
@@ -391,7 +444,7 @@
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#showcase">Portfolio</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -424,8 +477,8 @@
                 <div class="skill">HTML</div>
                 <div class="skill">CSS</div>
                 <div class="skill">JavaScript</div>
-                <div class="skill">circuit troubleshooting</div>
-                <div class="skill">Electrical wiring</div>
+                <div class="skill">Circuit Troubleshooting</div>
+                <div class="skill">Electrical Wiring</div>
             </div>
         </section>
 
@@ -433,29 +486,27 @@
             <h3 class="window-title">Projects</h3>
             <div class="project-photocards">
                 <div class="project-photocard">
-                    <div class="project-image">💻</div>
+                    <div class="project-image">💻<img src="p3.png" alt="Portfolio Website"></div>
                     <div class="project-details">
                         <h4>Portfolio Website</h4>
                         <p>Personal website inspired by computer interfaces with futuristic design and interactive
                             elements.</p>
                     </div>
                 </div>
-                 <div class="project-photocard">
-                    <div class="project-image">📊<img src="p3.png" alt="Styled Resume"></div>
+                <div class="project-photocard">
+                    <div class="project-image">📊<img src="p2.png" alt="Styled Resume"></div>
                     <div class="project-details">
                         <h4>Styled Resume</h4>
-                        <p>A modern and visually appealing resume design with clean typography and a professional layout.</p>
-                    </div>
-                </div>
-                <div class="project-photocard">
-                    <div class="project-image">💻</div>
-                    <div class="project-details">
-                        <h4>Video Editing</h4>
-                        <p>Created and edited short videos for RLW</p>
+                        <p>A modern and visually appealing resume design with clean typography and a professional
+                            layout.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div class="showcase-title" id="showcase">
+            <h2>PORTFOLIO SHOWCASE</h2>
+        </div>
 
         <section class="window" id="portfolio-bg">
             <h3 class="window-title">Background & Experience</h3>
@@ -480,16 +531,8 @@
                     <h4>Trainings & Seminars</h4>
                     <ul class="category-list">
                         <li class="category-item">
-                            <strong>Web Development Bootcamp</strong>
-                            Training Provider • 2024
-                        </li>
-                        <li class="category-item">
-                            <strong>UI/UX Design Workshop</strong>
-                            Design Institute • 2024
-                        </li>
-                        <li class="category-item">
-                            <strong>JavaScript Fundamentals</strong>
-                            Online Platform • 2023
+                            <strong>TESDA Electrical Installation and Maintenance NCII</strong>
+                            Electrician • 2017
                         </li>
                     </ul>
                 </div>
@@ -513,7 +556,8 @@
                     href="mailto:yourname@email.com">galangjaymar1234@gmail.com</a></p>
             <p class="contact-item"><span class="contact-icon">�</span> Phone: <a href="tel:+1234567890">+1 (234)
                     567-890</a></p>
-            <p class="contact-item"><span class="contact-icon">📍</span> Address: <span class="address-text">Tawiran, Panasahan,
+            <p class="contact-item"><span class="contact-icon">📍</span> Address: <span class="address-text">Tawiran,
+                    Panasahan,
                     Malolos, Bulacan</span></p>
             <p class="contact-item"><span class="contact-icon">🔗</span> GitHub: <a href="https://github.com/dashboard"
                     target="_blank">github.com/yourname</a></p>
@@ -529,5 +573,3 @@
 
 
 </html>
-
-
